@@ -7,6 +7,10 @@ import { AuthService } from './services/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
+  isLoggedIn: boolean;
+   constructor(private auth: AuthService) {
+     this.auth.handleAuthentication();
+    //  this.isLoggedIn = this.auth.isAuthenticated();
+   }
 
 } // end class

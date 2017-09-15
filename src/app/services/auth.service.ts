@@ -5,6 +5,7 @@ import * as auth0 from 'auth0-js';
 
 @Injectable()
 export class AuthService {
+  userProfile: any;
   // configure Auth0
   auth0 = new auth0.WebAuth({
     clientID: 'NtlD_tJwFTUc-YfwvZouUZY0qlHgp8Jw',
@@ -12,13 +13,14 @@ export class AuthService {
     responseType: 'token id_token',
     audience: 'https://yostevetest01.auth0.com/userinfo',
     redirectUri: 'http://localhost:4200/',
-    scope: 'openid'
+    scope: 'openid profile'
   });
 
   constructor(public router: Router) { }
 
-  public login(): void {
+  public login() {
     this.auth0.authorize();
+    this.handleAuthentication();
   }
 
   public handleAuthentication(): void {
@@ -56,6 +58,21 @@ export class AuthService {
     // access token's expiry time
     const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
     return new Date().getTime() < expiresAt;
+  }
+
+  public getProfile(cb): void {
+    const accessToken = localStorage.getItem('access_token');
+    if (!accessToken) {
+      throw new Error('Access token must exist to fetch profile');
+    }
+
+    const self = this;
+    this.auth0.client.userInfo(accessToken, (err, profile) => {
+      if (profile) {
+        self.userProfile = profile;
+      }
+      cb(err, profile);
+    });
   }
 
 } // end class

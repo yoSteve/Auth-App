@@ -1,3 +1,8 @@
-<p>
-  home component works!
-</p>
+<h3>Welcome</h3>
+<br>
+<div *ngIf="auth.isAuthenticated()">
+   <h4>You are logged in</h4>
+   <img src="http://i.imgur.com/wZY1EIr.gif" alt="Logged In">
+</div>
+
+<h4 *ngIf="!auth.isAuthenticated()">You are not logged in. <br /> Please click the Log In link above.</h4>

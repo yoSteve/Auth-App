@@ -10,6 +10,10 @@ const appRoutes: Routes = [
       component: HomeComponent
    },
    {
+         path: 'home',
+         component: HomeComponent
+      },
+   {
       path: 'profile',
       component: ProfileComponent
    }
