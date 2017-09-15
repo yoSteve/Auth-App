@@ -8,6 +8,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
 
 import { routing, appRoutingProviders} from './app.routing';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { routing, appRoutingProviders} from './app.routing';
     HttpModule,
     routing
   ],
-  providers: [ appRoutingProviders ],
+  providers: [ appRoutingProviders, AuthService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
