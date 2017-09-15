@@ -12,3 +12,8 @@
       </ul>
    </div>
 </div>
+
+<div class="row" *ngIf="!profile">
+   <h4>You must be logged in to view your profile.</h4>
+   <img src="https://media.giphy.com/media/m8DnDYfRwEtvG/giphy.gif" alt="Cannot View Profile">
+</div>
