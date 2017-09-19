@@ -8,7 +8,7 @@ export class AuthService {
   userProfile: any;
   // configure Auth0
   auth0 = new auth0.WebAuth({
-    clientID: 'NtlD_tJwFTUc-YfwvZouUZY0qlHgp8Jw',
+    clientID: 'QsF4Usbqg4f3xtnCuFYFoIlcyVG90hUN', // not confidential info
     domain: 'yostevetest01.auth0.com',
     responseType: 'token id_token',
     audience: 'https://yostevetest01.auth0.com/userinfo',
